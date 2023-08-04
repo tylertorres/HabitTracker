@@ -59,7 +59,7 @@ private func getHabitsForUser() async {}
 struct ModalView: View {
     
     @Binding var userInput: String
-    @Binding var show : Bool
+    @Binding var show: Bool
     
     var body: some View {
         
@@ -70,7 +70,10 @@ struct ModalView: View {
                 MaterialTextField()
                     .padding(.top, 20)
                 
-                IconsView()
+                
+                NavigationLink(destination: IconsView()){
+                    Text("Pick An Icon")
+                }
                 
                 Spacer()
                 
@@ -79,6 +82,8 @@ struct ModalView: View {
             .padding()
             .navigationTitle("Enter Habit Name")
         }
+        
+        
         
     }
 }

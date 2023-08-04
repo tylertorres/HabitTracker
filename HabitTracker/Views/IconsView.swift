@@ -12,12 +12,9 @@ struct IconsView: View {
     let icons : [Iconoir] = Iconoir.allCases
     let gridLayout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     
-    init() {
-        
-    }
-    
     var body: some View {
         NavigationView {
+            
             ScrollView {
                 LazyVGrid(columns: gridLayout, spacing: 40) {
                     ForEach(icons, id: \.self) { icon in
