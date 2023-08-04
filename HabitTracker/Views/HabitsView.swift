@@ -8,14 +8,15 @@
 import SwiftUI
 import Iconoir
 
+
 struct HabitsView: View {
     
     @State private var habits : [Habit] = [
-        Habit(id: 1, name: "Read 10 Pages"),
-        Habit(id: 1, name: "Walk a Mile"),
-        Habit(id: 1, name: "Code 1 component"),
-        Habit(id: 1, name: "Learn Spanish"),
-        Habit(id: 1, name: "Learn Latin"),
+        Habit(id: 1, name: "Read 10 Pages", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Walk a Mile", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Code 1 component", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Learn Spanish", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Learn Latin", icon: Iconoir.refresh.rawValue),
     ]
     @State private var showAddHabitSheet : Bool = false
     @State private var habitNameInput = ""
@@ -48,7 +49,7 @@ struct HabitsView: View {
         }
         .sheet(isPresented: $showAddHabitSheet) {
             NavigationView {
-                ModalView(userInput: $habitNameInput, show: $showAddHabitSheet)
+                ModalView(userInput: $habitNameInput, show: $showAddHabitSheet, habits: $habits)
                     .environment(\.colorScheme, .light)
             }
         }
@@ -59,6 +60,7 @@ struct ModalView: View {
     
     @Binding var userInput: String
     @Binding var show: Bool
+    @Binding var habits: [Habit]
     
     @State var icon : Iconoir = Iconoir.refresh
     
@@ -84,7 +86,7 @@ struct ModalView: View {
             .padding(.top, 30)
             
             Spacer()
-            ActionButtonRow(shouldDismiss: $show)
+            ActionButtonRow(shouldDismiss: $show, habitName: $userInput, icon: $icon, habits: $habits)
         }
         .padding()
         .navigationTitle("Add New Habit")
@@ -92,9 +94,8 @@ struct ModalView: View {
 }
 
 struct MaterialTextField: View {
-    @State private var text = ""
+    @Binding var text: String
     @State private var isEditing = false
-    @State private var isDone = false
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -121,6 +122,9 @@ struct MaterialTextField: View {
 
 struct ActionButtonRow : View {
     @Binding var shouldDismiss : Bool
+    @Binding var habitName: String
+    @Binding var icon: Iconoir
+    @Binding var habits: [Habit]
     
     var body : some View {
         
@@ -133,11 +137,18 @@ struct ActionButtonRow : View {
     }
     
     private func onSave() {
-        print("Save")
+        let newHabit = createHabit()
+        habits.append(newHabit)
+        shouldDismiss = true
     }
     
     private func onCancel() {
         shouldDismiss.toggle()
+    }
+    
+    private func createHabit() -> Habit {
+        let id = UUID()
+        return Habit(id: id, name: habitName, icon: icon.rawValue)
     }
 }
 
