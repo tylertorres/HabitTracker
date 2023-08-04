@@ -16,6 +16,3 @@ struct Habit : Codable, Hashable {
 }
 
 
-
-
-

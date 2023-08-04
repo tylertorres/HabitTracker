@@ -10,21 +10,9 @@ import Iconoir
 
 
 struct HabitsView: View {
+    @StateObject private var viewModel: HabitsViewModel = HabitsViewModel()
     
-    @State private var habits : [Habit] = [
-        Habit(id: 1, name: "Read 10 Pages", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Walk a Mile", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Code 1 component", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Learn Spanish", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Learn Latin", icon: Iconoir.refresh.rawValue),
-    ]
-    @State private var showAddHabitSheet : Bool = false
-    @State private var habitNameInput = ""
-    
-    private let twoColumnGridLayout = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    private let twoColumnGridLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView {
@@ -33,23 +21,23 @@ struct HabitsView: View {
                 
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 30) {
                     
-                    ForEach(habits, id: \.self) { item in
+                    ForEach(viewModel.habits, id: \.self) { item in
                         HabitCellView(name: item.name)
                             .frame(width: 175, height: 175)
                     }
                 }
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        HeaderView(showSheet: $showAddHabitSheet)
+                        HeaderView(showSheet: $viewModel.showAddHabitSheet)
                     }
                 }
             }
             .padding()
             .background(Color(.sRGB, white: 0.95, opacity: 1.0))
         }
-        .sheet(isPresented: $showAddHabitSheet) {
+        .sheet(isPresented: $viewModel.showAddHabitSheet) {
             NavigationView {
-                ModalView(userInput: $habitNameInput, show: $showAddHabitSheet, habits: $habits)
+                ModalView(viewModel: viewModel)
                     .environment(\.colorScheme, .light)
             }
         }
@@ -57,16 +45,13 @@ struct HabitsView: View {
 }
 
 struct ModalView: View {
-    
-    @Binding var userInput: String
-    @Binding var show: Bool
-    @Binding var habits: [Habit]
+    @ObservedObject var viewModel: HabitsViewModel
     
     @State var icon : Iconoir = Iconoir.refresh
     
     var body: some View {
         VStack {
-            MaterialTextField()
+            MaterialTextField(text: $viewModel.habitNameInput)
                 .padding(.top, 20)
             
             HStack (alignment: .center) {
@@ -86,7 +71,7 @@ struct ModalView: View {
             .padding(.top, 30)
             
             Spacer()
-            ActionButtonRow(shouldDismiss: $show, habitName: $userInput, icon: $icon, habits: $habits)
+            ActionButtonRow(shouldDismiss: $viewModel.showAddHabitSheet, onSave: viewModel.saveNewHabit2)
         }
         .padding()
         .navigationTitle("Add New Habit")
@@ -122,33 +107,15 @@ struct MaterialTextField: View {
 
 struct ActionButtonRow : View {
     @Binding var shouldDismiss : Bool
-    @Binding var habitName: String
-    @Binding var icon: Iconoir
-    @Binding var habits: [Habit]
+    var onSave: () -> Void
     
     var body : some View {
-        
         HStack {
-            Button(action: onCancel) { Text("Cancel") }
+            Button("Cancel") { shouldDismiss.toggle() }
             Spacer()
-            Button(action: onSave) { Text("Add Habit") }
+            Button("Add Habit", action: onSave)
         }
         .padding()
-    }
-    
-    private func onSave() {
-        let newHabit = createHabit()
-        habits.append(newHabit)
-        shouldDismiss = true
-    }
-    
-    private func onCancel() {
-        shouldDismiss.toggle()
-    }
-    
-    private func createHabit() -> Habit {
-        let id = UUID()
-        return Habit(id: id, name: habitName, icon: icon.rawValue)
     }
 }
 

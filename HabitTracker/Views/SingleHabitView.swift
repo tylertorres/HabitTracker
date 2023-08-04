@@ -19,9 +19,9 @@ struct SingleHabitView: View {
 struct SingleHabitView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            VStack {
-                SingleHabitView(currentHabit: Habit(id: 1, name: "Read", userId: "dklafjlsdfn", completedActivities: []))
-            }
+//            VStack {
+//                SingleHabitView(currentHabit: Habit(id: 1, name: "Read", userId: "dklafjlsdfn", completedActivities: []))
+//            }
         }
     }
 }

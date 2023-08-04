@@ -9,7 +9,7 @@ import Foundation
 
 protocol API {
     func getHabits(for user: String) async throws -> [Habit]
-    func insertHabit(for user: String, with habitName: String) async throws -> Void
+    func saveHabit(user: UUID, habitName: String) async throws -> Void
 }
 
 class APIClient : API {
@@ -36,7 +36,11 @@ class APIClient : API {
         return habits
     }
     
-    func insertHabit(for user: String, with habitName: String) async throws -> Void {
+    func saveHabit(user: UUID, habitName: String) async throws -> Void {
+        try await Task.sleep(for: Duration.seconds(5))
+        
+        return
+        
         let request = createInsertHabitRequest(userId: user, habitName: habitName)
         
         let (data, _) = try await urlSession.data(for: request)
@@ -44,8 +48,6 @@ class APIClient : API {
         let _ = try JSONDecoder().decode(InsertHabitResponse.self, from: data)
         
         print("Successfully persisted habit \(habitName) for user \(user)")
-        
-        return
     }
     
     private func createGetHabitsRequest(userId: String) -> URLRequest {
@@ -56,7 +58,7 @@ class APIClient : API {
         return request
     }
     
-    private func createInsertHabitRequest(userId: String, habitName: String) -> URLRequest {
+    private func createInsertHabitRequest(userId: UUID, habitName: String) -> URLRequest {
         let requestBody = ["name" : habitName]
         let endpointUrl = baseUrl + usersPath + "\(userId)" + habitsPath
         var request = URLRequest(url: URL(string: endpointUrl)!)

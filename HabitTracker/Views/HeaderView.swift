@@ -20,17 +20,13 @@ struct HeaderView : View {
                     .font(.system(size: 34, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Button(action: addHabitAction) {
+                Button(action: { showSheet.toggle() }) {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 34))
                         .foregroundColor(.primary)
                 }
             }
         }
-    }
-    
-    func addHabitAction() {
-        showSheet.toggle()
     }
 }
 
