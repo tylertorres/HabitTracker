@@ -12,12 +12,21 @@
 		2F10C8942A32A1FF0013E32C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F10C8932A32A1FF0013E32C /* Assets.xcassets */; };
 		2F10C8972A32A1FF0013E32C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F10C8962A32A1FF0013E32C /* Preview Assets.xcassets */; };
 		2F10C89F2A32A5FF0013E32C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C89E2A32A5FF0013E32C /* MainTabView.swift */; };
-		2F10C8A12A32A6240013E32C /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8A02A32A6240013E32C /* HabitsView.swift */; };
-		2F10C8A32A32B5F60013E32C /* HabitTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8A22A32B5F60013E32C /* HabitTitleView.swift */; };
+		2F10C8A32A32B5F60013E32C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8A22A32B5F60013E32C /* HeaderView.swift */; };
 		2F10C8A52A32BA650013E32C /* SingleHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8A42A32BA650013E32C /* SingleHabitView.swift */; };
 		2F10C8A82A32BA8F0013E32C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8A72A32BA8F0013E32C /* Habit.swift */; };
 		2F10C8AA2A32BDFC0013E32C /* HabitCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8A92A32BDFC0013E32C /* HabitCalendarView.swift */; };
 		2F10C8AC2A33C6890013E32C /* HabitCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F10C8AB2A33C6890013E32C /* HabitCellView.swift */; };
+		2F3DBCCB2A3C03660055F60C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DBCCA2A3C03660055F60C /* Activity.swift */; };
+		2F3DBCCD2A3C03880055F60C /* ActivityStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DBCCC2A3C03880055F60C /* ActivityStore.swift */; };
+		2F4396B22A60CD1100C7C716 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4396B12A60CD1100C7C716 /* MaterialButton.swift */; };
+		2F86858A2A4CE7F4005113C3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8685892A4CE7F4005113C3 /* APIClient.swift */; };
+		2F86858C2A4E043E005113C3 /* HabitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F86858B2A4E043E005113C3 /* HabitResponse.swift */; };
+		2F9992E72A7C7F300030F9F4 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9992E62A7C7F300030F9F4 /* IconCell.swift */; };
+		2F9992EA2A7C8F5A0030F9F4 /* IconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9992E92A7C8F5A0030F9F4 /* IconsView.swift */; };
+		2FEA25972A5630360075F8CE /* Iconoir in Frameworks */ = {isa = PBXBuildFile; productRef = 2FEA25962A5630360075F8CE /* Iconoir */; };
+		2FFADA6A2A4E3DDC00132964 /* InsertHabitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADA692A4E3DDC00132964 /* InsertHabitResponse.swift */; };
+		2FFADA6C2A4F2E6400132964 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADA6B2A4F2E6400132964 /* HabitsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +36,20 @@
 		2F10C8932A32A1FF0013E32C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F10C8962A32A1FF0013E32C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F10C89E2A32A5FF0013E32C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		2F10C8A02A32A6240013E32C /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
-		2F10C8A22A32B5F60013E32C /* HabitTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTitleView.swift; sourceTree = "<group>"; };
+		2F10C8A22A32B5F60013E32C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2F10C8A42A32BA650013E32C /* SingleHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleHabitView.swift; sourceTree = "<group>"; };
 		2F10C8A72A32BA8F0013E32C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		2F10C8A92A32BDFC0013E32C /* HabitCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalendarView.swift; sourceTree = "<group>"; };
 		2F10C8AB2A33C6890013E32C /* HabitCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCellView.swift; sourceTree = "<group>"; };
+		2F3DBCCA2A3C03660055F60C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		2F3DBCCC2A3C03880055F60C /* ActivityStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityStore.swift; sourceTree = "<group>"; };
+		2F4396B12A60CD1100C7C716 /* MaterialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
+		2F8685892A4CE7F4005113C3 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		2F86858B2A4E043E005113C3 /* HabitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitResponse.swift; sourceTree = "<group>"; };
+		2F9992E62A7C7F300030F9F4 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
+		2F9992E92A7C8F5A0030F9F4 /* IconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsView.swift; sourceTree = "<group>"; };
+		2FFADA692A4E3DDC00132964 /* InsertHabitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertHabitResponse.swift; sourceTree = "<group>"; };
+		2FFADA6B2A4F2E6400132964 /* HabitsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FEA25972A5630360075F8CE /* Iconoir in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +83,16 @@
 		2F10C88E2A32A1FD0013E32C /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
+				2F9992E52A7C7F180030F9F4 /* Cells */,
+				2FFADA682A4E3DC000132964 /* Responses */,
 				2F10C8A62A32BA7B0013E32C /* Models */,
 				2F10C89D2A32A5D00013E32C /* Views */,
 				2F10C88F2A32A1FD0013E32C /* HabitTrackerApp.swift */,
 				2F10C8912A32A1FD0013E32C /* ContentView.swift */,
 				2F10C8932A32A1FF0013E32C /* Assets.xcassets */,
 				2F10C8952A32A1FF0013E32C /* Preview Content */,
+				2F8685892A4CE7F4005113C3 /* APIClient.swift */,
+				2F4396B12A60CD1100C7C716 /* MaterialButton.swift */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -86,9 +108,10 @@
 		2F10C89D2A32A5D00013E32C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F9992E92A7C8F5A0030F9F4 /* IconsView.swift */,
+				2FFADA6B2A4F2E6400132964 /* HabitsView.swift */,
 				2F10C89E2A32A5FF0013E32C /* MainTabView.swift */,
-				2F10C8A02A32A6240013E32C /* HabitsView.swift */,
-				2F10C8A22A32B5F60013E32C /* HabitTitleView.swift */,
+				2F10C8A22A32B5F60013E32C /* HeaderView.swift */,
 				2F10C8A42A32BA650013E32C /* SingleHabitView.swift */,
 				2F10C8A92A32BDFC0013E32C /* HabitCalendarView.swift */,
 				2F10C8AB2A33C6890013E32C /* HabitCellView.swift */,
@@ -100,8 +123,27 @@
 			isa = PBXGroup;
 			children = (
 				2F10C8A72A32BA8F0013E32C /* Habit.swift */,
+				2F3DBCCA2A3C03660055F60C /* Activity.swift */,
+				2F3DBCCC2A3C03880055F60C /* ActivityStore.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2F9992E52A7C7F180030F9F4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F9992E62A7C7F300030F9F4 /* IconCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2FFADA682A4E3DC000132964 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				2F86858B2A4E043E005113C3 /* HabitResponse.swift */,
+				2FFADA692A4E3DDC00132964 /* InsertHabitResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +162,9 @@
 			dependencies = (
 			);
 			name = HabitTracker;
+			packageProductDependencies = (
+				2FEA25962A5630360075F8CE /* Iconoir */,
+			);
 			productName = HabitTracker;
 			productReference = 2F10C88C2A32A1FD0013E32C /* HabitTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +193,9 @@
 				Base,
 			);
 			mainGroup = 2F10C8832A32A1FD0013E32C;
+			packageReferences = (
+				2FEA25952A5630360075F8CE /* XCRemoteSwiftPackageReference "iconoir-swift" */,
+			);
 			productRefGroup = 2F10C88D2A32A1FD0013E32C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,15 +222,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3DBCCD2A3C03880055F60C /* ActivityStore.swift in Sources */,
+				2F9992EA2A7C8F5A0030F9F4 /* IconsView.swift in Sources */,
+				2F3DBCCB2A3C03660055F60C /* Activity.swift in Sources */,
+				2F9992E72A7C7F300030F9F4 /* IconCell.swift in Sources */,
+				2FFADA6A2A4E3DDC00132964 /* InsertHabitResponse.swift in Sources */,
+				2FFADA6C2A4F2E6400132964 /* HabitsView.swift in Sources */,
 				2F10C8AC2A33C6890013E32C /* HabitCellView.swift in Sources */,
+				2F86858C2A4E043E005113C3 /* HabitResponse.swift in Sources */,
 				2F10C8922A32A1FD0013E32C /* ContentView.swift in Sources */,
-				2F10C8A12A32A6240013E32C /* HabitsView.swift in Sources */,
-				2F10C8A32A32B5F60013E32C /* HabitTitleView.swift in Sources */,
+				2F10C8A32A32B5F60013E32C /* HeaderView.swift in Sources */,
 				2F10C8A82A32BA8F0013E32C /* Habit.swift in Sources */,
 				2F10C8902A32A1FD0013E32C /* HabitTrackerApp.swift in Sources */,
 				2F10C89F2A32A5FF0013E32C /* MainTabView.swift in Sources */,
 				2F10C8A52A32BA650013E32C /* SingleHabitView.swift in Sources */,
 				2F10C8AA2A32BDFC0013E32C /* HabitCalendarView.swift in Sources */,
+				2F86858A2A4CE7F4005113C3 /* APIClient.swift in Sources */,
+				2F4396B22A60CD1100C7C716 /* MaterialButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +439,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2FEA25952A5630360075F8CE /* XCRemoteSwiftPackageReference "iconoir-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iconoir-icons/iconoir-swift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FEA25962A5630360075F8CE /* Iconoir */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FEA25952A5630360075F8CE /* XCRemoteSwiftPackageReference "iconoir-swift" */;
+			productName = Iconoir;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F10C8842A32A1FD0013E32C /* Project object */;
 }
