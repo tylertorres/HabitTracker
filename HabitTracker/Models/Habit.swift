@@ -8,6 +8,8 @@
 import Foundation
 
 struct Habit : Codable, Hashable {
+    let id : Int
     let name : String
-    var datesCompleted : [Date]
+    var userId : String?
+    var completedActivities : [Activity]?
 }

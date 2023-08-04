@@ -9,42 +9,33 @@ import SwiftUI
 
 struct HabitCellView: View {
     
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    
     let name : String
-    let calendar : Calendar
     
     var body: some View {
         
-        ZStack {
-            Rectangle()
-                .fill(Color(.systemGray3))
+        VStack(alignment: .leading) {
             
-            VStack {
-                
-                ZStack {
-                    
-                    RoundedRectangle(cornerRadius: 0) // change this to get more of a semi-circle header
-                        .fill(.blue)
-                        .frame(height: 35)
-                    
-                    Text(name)
-                        .colorInvert()
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.01)
-                        .padding(.horizontal)
-                        .bold()
-                }
-                Spacer()
-            }
-            
+            Image(systemName: "dumbbell.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40)
+            Spacer()
+            Text(name)
+                .font(.title)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+                .bold()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .padding()
+        .foregroundColor(.black)
+        .background(Color.white)
         .cornerRadius(10)
     }
 }
 
 struct HabitCellView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitCellView(name: "Reading", calendar: Calendar.current)
+        HabitCellView(name: "Reading")
     }
 }

@@ -11,8 +11,8 @@ import SwiftUI
 struct HabitTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .preferredColorScheme(.light)
+            HabitsView()
+                .environment(\.colorScheme, .light)
         }
     }
 }
