@@ -11,6 +11,7 @@ import Iconoir
 struct IconCell: View {
     let icon: Iconoir
     let cornerRadius: CGFloat?
+    var borderColor: Color = Color.secondary
     
     init(icon: Iconoir, cornerRadius: CGFloat? = nil) {
         self.icon = icon
@@ -23,7 +24,7 @@ struct IconCell: View {
         }
         .padding()
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius ?? 0))
-        .overlay(RoundedRectangle(cornerRadius: cornerRadius ?? 0).stroke(Color.secondary))
+        .overlay(RoundedRectangle(cornerRadius: cornerRadius ?? 0).stroke(borderColor))
     }
 }
 

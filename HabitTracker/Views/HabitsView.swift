@@ -27,8 +27,11 @@ struct HabitsView: View {
     
     var body: some View {
         NavigationView {
+            
             ScrollView {
+                
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 30) {
+                    
                     ForEach(habits, id: \.self) { item in
                         HabitCellView(name: item.name)
                             .frame(width: 175, height: 175)
@@ -43,48 +46,48 @@ struct HabitsView: View {
             .padding()
             .background(Color(.sRGB, white: 0.95, opacity: 1.0))
         }
-        .task {
-            await getHabitsForUser()
-        }
         .sheet(isPresented: $showAddHabitSheet) {
-            ModalView(userInput: $habitNameInput, show: $showAddHabitSheet)
-                .environment(\.colorScheme, .light)
+            NavigationView {
+                ModalView(userInput: $habitNameInput, show: $showAddHabitSheet)
+                    .environment(\.colorScheme, .light)
+            }
         }
     }
 }
-
-// MARK
-private func getHabitsForUser() async {}
 
 struct ModalView: View {
     
     @Binding var userInput: String
     @Binding var show: Bool
     
+    @State var icon : Iconoir = Iconoir.refresh
+    
     var body: some View {
-        
-        NavigationView {
+        VStack {
+            MaterialTextField()
+                .padding(.top, 20)
             
-            VStack(alignment: .leading) {
-                
-                MaterialTextField()
-                    .padding(.top, 20)
-                
-                
-                NavigationLink(destination: IconsView()){
-                    Text("Pick An Icon")
+            HStack (alignment: .center) {
+                NavigationLink(destination: IconsView(selectedIcon: $icon)) {
+                    
+                    Text("Choose Icon")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding()
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-                
                 Spacer()
-                
-                ActionButtonRow(shouldDismiss: $show)
+                IconCell(icon: icon, cornerRadius: 10)
             }
-            .padding()
-            .navigationTitle("Enter Habit Name")
+            .padding(.top, 30)
+            
+            Spacer()
+            ActionButtonRow(shouldDismiss: $show)
         }
-        
-        
-        
+        .padding()
+        .navigationTitle("Add New Habit")
     }
 }
 
@@ -112,7 +115,6 @@ struct MaterialTextField: View {
             )
             .animation(.linear, value: isEditing)
         }
-        .padding(.horizontal, 15)
     }
 }
 
