@@ -10,7 +10,6 @@ import Iconoir
 import UIKit
 
 class HabitsViewModel : ObservableObject {
-    
     // View Models let you separate out logic from the UI layer
     @Published var habits : [Habit] = [
         Habit(id: 1, name: "Read 10 Pages", icon: Iconoir.refresh.rawValue),
@@ -43,6 +42,7 @@ class HabitsViewModel : ObservableObject {
     func saveNewHabit2() {
         guard let device_id = UIDevice.current.identifierForVendor else { return }
         
+        // Optimistic UI
         let newHabit = Habit(id: habits.count + 1, name: habitNameInput, icon: selectedIcon.rawValue)
         habits.append(newHabit)
         clearInput()

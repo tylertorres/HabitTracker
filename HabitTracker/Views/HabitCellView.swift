@@ -14,7 +14,6 @@ struct HabitCellView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            
             Image(systemName: "dumbbell.fill")
                 .resizable()
                 .scaledToFit()

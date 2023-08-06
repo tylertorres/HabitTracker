@@ -16,24 +16,30 @@ struct HabitsView: View {
     
     var body: some View {
         NavigationView {
-            
             ScrollView {
-                
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 30) {
-                    
-                    ForEach(viewModel.habits, id: \.self) { item in
-                        HabitCellView(name: item.name)
-                            .frame(width: 175, height: 175)
-                    }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        HeaderView(showSheet: $viewModel.showAddHabitSheet)
+                    ForEach(viewModel.habits, id: \.self) { habit in
+                        NavigationLink(destination: SingleHabitView(currentHabit: habit)) {
+                            HabitCellView(name: habit.name)
+                                .frame(width: 175, height: 175)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
             }
             .padding()
             .background(Color(.sRGB, white: 0.95, opacity: 1.0))
+            .navigationTitle("Habits")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { viewModel.showAddHabitSheet.toggle() }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 34))
+                            .foregroundColor(.primary)
+                    }
+                }
+            }
         }
         .sheet(isPresented: $viewModel.showAddHabitSheet) {
             NavigationView {
@@ -46,7 +52,6 @@ struct HabitsView: View {
 
 struct ModalView: View {
     @ObservedObject var viewModel: HabitsViewModel
-    
     @State var icon : Iconoir = Iconoir.refresh
     
     var body: some View {
@@ -56,7 +61,6 @@ struct ModalView: View {
             
             HStack (alignment: .center) {
                 NavigationLink(destination: IconsView(selectedIcon: $icon)) {
-                    
                     Text("Choose Icon")
                         .font(.title3)
                         .fontWeight(.bold)
@@ -94,6 +98,7 @@ struct MaterialTextField: View {
             TextField("", text: $text, onEditingChanged: { editing in
                 isEditing = editing
             })
+            
             .padding(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)

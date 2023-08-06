@@ -6,22 +6,26 @@
 //
 
 import SwiftUI
+import Iconoir
 
 struct SingleHabitView: View {
-    
     @State var currentHabit : Habit
     
     var body: some View {
-        HabitCalendarView(interval: DateInterval(start: .distantPast, end: .distantFuture))
+        
+        VStack(alignment: .leading) {
+            ScrollView {
+                HabitCalendarView(interval: DateInterval(start: .distantPast, end: .distantFuture))
+            }
+            .padding()
+            .navigationTitle(currentHabit.name)
+        }
+        
     }
 }
 
 struct SingleHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollView {
-//            VStack {
-//                SingleHabitView(currentHabit: Habit(id: 1, name: "Read", userId: "dklafjlsdfn", completedActivities: []))
-//            }
-        }
+        SingleHabitView(currentHabit: Habit(id: 1, name: "Read For 30 Minutes", icon: Iconoir.refresh.rawValue))
     }
 }
