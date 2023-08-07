@@ -20,7 +20,6 @@ struct SingleHabitView: View {
             
             
             
-            
               
         }
         .padding()

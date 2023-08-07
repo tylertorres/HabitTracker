@@ -9,6 +9,9 @@ import SwiftUI
 import Iconoir
 
 
+
+
+
 struct HabitsView: View {
     @StateObject private var viewModel: HabitsViewModel = HabitsViewModel()
     
@@ -99,7 +102,6 @@ struct MaterialTextField: View {
             TextField("", text: $text, onEditingChanged: { editing in
                 isEditing = editing
             })
-            
             .padding(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
@@ -110,7 +112,7 @@ struct MaterialTextField: View {
     }
 }
 
-
+    
 struct ActionButtonRow : View {
     @Binding var shouldDismiss : Bool
     var onSave: () -> Void
