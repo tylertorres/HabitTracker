@@ -23,10 +23,6 @@ class HabitsViewModel : ObservableObject {
     @Published var habitNameInput: String = ""
     @Published var selectedIcon: Iconoir = Iconoir.refresh
     
-    // TODO: On the backend, generate a uuid and pass it back to the client
-    // Then on the client save it in userdefaults until the user logs out
-    //
-    
     func saveNewHabit() async {
         guard let device_id = await UIDevice.current.identifierForVendor else { return }
         

@@ -17,10 +17,14 @@ struct SingleHabitView: View {
             ScrollView {
                 HabitCalendarView(interval: DateInterval(start: .distantPast, end: .distantFuture))
             }
-            .padding()
-            .navigationTitle(currentHabit.name)
+            
+            
+            
+            
+              
         }
-        
+        .padding()
+        .navigationTitle(currentHabit.name)
     }
 }
 

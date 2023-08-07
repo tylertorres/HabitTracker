@@ -16,6 +16,7 @@ struct HabitsView: View {
     
     var body: some View {
         NavigationView {
+            
             ScrollView {
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 30) {
                     ForEach(viewModel.habits, id: \.self) { habit in
