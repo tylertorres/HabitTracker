@@ -9,7 +9,7 @@ import Foundation
 
 struct Activity : Codable, Hashable {
     let dateCompleted : Date
-    var notes : String
+    var note : String
     let habitId : UUID
 }
 

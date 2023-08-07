@@ -23,6 +23,7 @@ class HabitsViewModel : ObservableObject {
     @Published var showAddHabitSheet: Bool = false
     @Published var habitNameInput: String = ""
     @Published var selectedIcon: Iconoir = Iconoir.refresh
+    @Published var showAddActivitySheet: Bool = false
     
     func saveNewHabit() async {
         guard let device_id = await UIDevice.current.identifierForVendor else { return }

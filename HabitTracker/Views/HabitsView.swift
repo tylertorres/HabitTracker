@@ -16,7 +16,6 @@ struct HabitsView: View {
     
     var body: some View {
         NavigationView {
-            
             ScrollView {
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 30) {
                     if viewModel.habits.isEmpty {
@@ -25,7 +24,6 @@ struct HabitsView: View {
                                 .frame(width: 175, height: 175)
                         }
                     }
-                    
                     ForEach(viewModel.habits, id: \.self) { habit in
                         NavigationLink(destination: SingleHabitView(currentHabit: habit)) {
                             HabitCellView(name: habit.name)

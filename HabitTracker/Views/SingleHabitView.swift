@@ -9,21 +9,20 @@ import SwiftUI
 import Iconoir
 
 struct SingleHabitView: View {
+    @StateObject var viewModel: SingleHabitViewModel = SingleHabitViewModel()
     @State var currentHabit : Habit
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             ScrollView {
-                HabitCalendarView(interval: DateInterval(start: .distantPast, end: .distantFuture))
+                HabitCalendarView(viewModel: viewModel, interval: DateInterval(start: .distantPast, end: .distantFuture))
             }
-            
-            
-            
-              
         }
         .padding()
         .navigationTitle(currentHabit.name)
+        .sheet(isPresented: $viewModel.showAddActivitySheet) {
+            AddActivityView(viewModel: viewModel)
+        }
     }
 }
 
