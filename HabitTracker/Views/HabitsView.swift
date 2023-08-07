@@ -9,9 +9,6 @@ import SwiftUI
 import Iconoir
 
 
-
-
-
 struct HabitsView: View {
     @StateObject private var viewModel: HabitsViewModel = HabitsViewModel()
     
@@ -22,6 +19,13 @@ struct HabitsView: View {
             
             ScrollView {
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 30) {
+                    if viewModel.habits.isEmpty {
+                        Button(action: { viewModel.showAddHabitSheet.toggle() }) {
+                            EmptyHabitCell()
+                                .frame(width: 175, height: 175)
+                        }
+                    }
+                    
                     ForEach(viewModel.habits, id: \.self) { habit in
                         NavigationLink(destination: SingleHabitView(currentHabit: habit)) {
                             HabitCellView(name: habit.name)
@@ -112,7 +116,7 @@ struct MaterialTextField: View {
     }
 }
 
-    
+
 struct ActionButtonRow : View {
     @Binding var shouldDismiss : Bool
     var onSave: () -> Void
