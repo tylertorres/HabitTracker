@@ -11,17 +11,39 @@ struct AddActivityView: View {
     @ObservedObject var viewModel: SingleHabitViewModel
     @State private var isHabitCompleted: Bool = false
     
-    
     var body: some View {
         VStack {
             Text("Add Activity")
+                .padding()
             Divider()
             Text("Habit Completed?")
+                .padding()
             HStack {
                 Button("No") { viewModel.showAddActivitySheet.toggle() }
-                Button("Yes") {}
+                Button("Yes") { isHabitCompleted = true }
             }
-            TextField("", text: $viewModel.currentNoteText)
+            TextEditor(text: $viewModel.currentNoteText)
+                .padding()
+                .frame(height: 100)
+                .textFieldStyle(.roundedBorder)
+                .background(RoundedRectangle(cornerRadius: 25).strokeBorder(Color.secondary, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.secondary, lineWidth: 1.5))
+                .padding()
+                .disabled(!isHabitCompleted)
+            Spacer()
+            Button(action: { viewModel.saveActivity() }) {
+                Text("Save Activity")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 25).fill(isHabitCompleted ? Color.black : Color.clear))
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.black, lineWidth: 1.5))
+                    .foregroundColor(isHabitCompleted ? Color.white : Color.black)
+            }
+            .disabled(!isHabitCompleted)
+            .padding()
+            .animation(.easeInOut, value: isHabitCompleted)
         }
         .presentationDetents([.medium])
         .presentationCornerRadius(25)

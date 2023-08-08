@@ -14,15 +14,29 @@ struct SingleHabitView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            ScrollView {
-                HabitCalendarView(viewModel: viewModel, interval: DateInterval(start: .distantPast, end: .distantFuture))
+            HabitCalendarView(viewModel: viewModel, interval: DateInterval(start: .distantPast, end: .distantFuture))
+            Divider()
+            List {
+                ForEach(viewModel.activityStore, id: \.id) { activity in
+                    HStack {
+                        Text("\(activity.dateCompleted.formatted(date: .abbreviated, time: .omitted))")
+                            .font(.title3)
+                        Spacer()
+                        if !activity.note.isEmpty {
+                            Iconoir.notes.asImage
+                        }
+                    }
+                    .padding()
+                }
             }
+            .listStyle(.plain)
         }
         .padding()
-        .navigationTitle(currentHabit.name)
         .sheet(isPresented: $viewModel.showAddActivitySheet) {
             AddActivityView(viewModel: viewModel)
         }
+        .navigationTitle(currentHabit.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

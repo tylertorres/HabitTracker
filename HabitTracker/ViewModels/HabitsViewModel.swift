@@ -10,15 +10,15 @@ import Iconoir
 import UIKit
 
 class HabitsViewModel : ObservableObject {
-//    @Published var habits : [Habit] = [
-//        Habit(id: 1, name: "Read 10 Pages", icon: Iconoir.refresh.rawValue),
-//        Habit(id: 1, name: "Walk a Mile", icon: Iconoir.refresh.rawValue),
-//        Habit(id: 1, name: "Code 1 component", icon: Iconoir.refresh.rawValue),
-//        Habit(id: 1, name: "Learn Spanish", icon: Iconoir.refresh.rawValue),
-//        Habit(id: 1, name: "Learn Latin", icon: Iconoir.refresh.rawValue),
-//    ]
+    @Published var habits : [Habit] = [
+        Habit(id: 1, name: "Read 10 Pages", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Walk a Mile", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Code 1 component", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Learn Spanish", icon: Iconoir.refresh.rawValue),
+        Habit(id: 1, name: "Learn Latin", icon: Iconoir.refresh.rawValue),
+    ]
     
-    @Published var habits : [Habit] = []
+//    @Published var habits : [Habit] = []
     
     @Published var showAddHabitSheet: Bool = false
     @Published var habitNameInput: String = ""
