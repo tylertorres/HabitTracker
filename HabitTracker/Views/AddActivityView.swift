@@ -10,6 +10,7 @@ import SwiftUI
 struct AddActivityView: View {
     @ObservedObject var viewModel: SingleHabitViewModel
     @State private var isHabitCompleted: Bool = false
+    var habitId: Int
     
     var body: some View {
         VStack {
@@ -26,12 +27,12 @@ struct AddActivityView: View {
                 .padding()
                 .frame(height: 100)
                 .textFieldStyle(.roundedBorder)
-                .background(RoundedRectangle(cornerRadius: 25).strokeBorder(Color.secondary, lineWidth: 1))
-                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.secondary, lineWidth: 1.5))
+                .background(RoundedRectangle(cornerRadius: 25).strokeBorder(Color.gray, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.gray, lineWidth: 1.5))
                 .padding()
                 .disabled(!isHabitCompleted)
             Spacer()
-            Button(action: { viewModel.saveActivity() }) {
+            Button(action: { viewModel.saveActivity(habitId: habitId) }) {
                 Text("Save Activity")
                     .font(.title3)
                     .fontWeight(.bold)
@@ -52,6 +53,6 @@ struct AddActivityView: View {
 
 struct AddActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        AddActivityView(viewModel: SingleHabitViewModel())
+        AddActivityView(viewModel: SingleHabitViewModel(), habitId: 1)
     }
 }

@@ -11,6 +11,6 @@ struct Activity : Codable, Hashable, Identifiable {
     var id: Int
     let dateCompleted: Date
     var note: String
-    let habitId: UUID
+    let habitId: Int
 }
 
