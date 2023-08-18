@@ -8,8 +8,8 @@
 import SwiftUI
 import Iconoir
 
-struct SingleHabitView: View {
-    @StateObject var viewModel: SingleHabitViewModel = SingleHabitViewModel()
+struct SingleHabitView: View { 
+    @StateObject var viewModel = SingleHabitViewModel()
     @State var currentHabit : Habit
     
     var body: some View {
@@ -42,6 +42,6 @@ struct SingleHabitView: View {
 
 struct SingleHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleHabitView(currentHabit: Habit(id: 1, name: "Read For 30 Minutes", icon: Iconoir.refresh.rawValue))
+        SingleHabitView(currentHabit: Habit(id: UUID().uuidString, name: "Read For 30 Minutes", icon: Iconoir.refresh.rawValue))
     }
 }

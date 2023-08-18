@@ -10,50 +10,38 @@ import Iconoir
 import UIKit
 
 class HabitsViewModel : ObservableObject {
-    @Published var habits : [Habit] = [
-        Habit(id: 1, name: "Read 10 Pages", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Walk a Mile", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Code 1 component", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Learn Spanish", icon: Iconoir.refresh.rawValue),
-        Habit(id: 1, name: "Learn Latin", icon: Iconoir.refresh.rawValue),
-    ]
-    
-//    @Published var habits : [Habit] = []
-    
+    @Published var habits = [Habit]()
     @Published var showAddHabitSheet: Bool = false
     @Published var habitNameInput: String = ""
     @Published var selectedIcon: Iconoir = Iconoir.refresh
     @Published var showAddActivitySheet: Bool = false
     
-    func saveNewHabit() async {
-        guard let device_id = await UIDevice.current.identifierForVendor else { return }
+    func loadHabitsFromUserDefaults() {
+        print("Loading habits...")
+        guard let userId = UIDevice.current.identifierForVendor?.uuidString else { return }
+
+        let habits = APIClient.shared.getHabitsFromUserDefaults(for: userId)
         
-        do {
-            try await APIClient.shared.saveHabit(user: device_id, habitName: habitNameInput)
-            habits.append(Habit(id: habits.count + 1, name: habitNameInput, icon: selectedIcon.rawValue))
-            clearInput()
-        } catch {
-            print(error)
-        }
+        guard let habits else { return }
+        
+        print(habits)
+        
+        updateUI(with: habits)
     }
     
-    func saveNewHabit2() {
-        guard let device_id = UIDevice.current.identifierForVendor else { return }
+    func saveHabitToUserDefaults() {
+        guard let userId = UIDevice.current.identifierForVendor?.uuidString else { return }
         
-        // Optimistic UI
-        let newHabit = Habit(id: habits.count + 1, name: habitNameInput, icon: selectedIcon.rawValue)
+        let newHabit = Habit(id: UUID().uuidString, name: habitNameInput, icon: selectedIcon.rawValue)
         habits.append(newHabit)
+        APIClient.shared.saveToUserDefaults(userId, newHabit)
+        
         clearInput()
-        
-        print("Locally added new habit")
-        
-        Task {
-            do {
-                try await APIClient.shared.saveHabit(user: device_id, habitName: habitNameInput)
-                print("Remotely added New Habit")
-            } catch {
-                print(error)
-            }
+    }
+    
+    private func updateUI(with habits: [Habit]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.habits = habits
         }
     }
     

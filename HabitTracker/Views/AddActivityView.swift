@@ -10,7 +10,7 @@ import SwiftUI
 struct AddActivityView: View {
     @ObservedObject var viewModel: SingleHabitViewModel
     @State private var isHabitCompleted: Bool = false
-    var habitId: Int
+    var habitId: String
     
     var body: some View {
         VStack {
@@ -53,6 +53,6 @@ struct AddActivityView: View {
 
 struct AddActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        AddActivityView(viewModel: SingleHabitViewModel(), habitId: 1)
+        AddActivityView(viewModel: SingleHabitViewModel(), habitId: UUID().uuidString)
     }
 }

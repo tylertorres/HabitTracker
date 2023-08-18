@@ -53,6 +53,9 @@ struct HabitsView: View {
                     .environment(\.colorScheme, .light)
             }
         }
+        .onAppear {
+            viewModel.loadHabitsFromUserDefaults()
+        }
     }
 }
 
@@ -81,7 +84,7 @@ struct ModalView: View {
             .padding(.top, 30)
             
             Spacer()
-            ActionButtonRow(shouldDismiss: $viewModel.showAddHabitSheet, onSave: viewModel.saveNewHabit2)
+            ActionButtonRow(shouldDismiss: $viewModel.showAddHabitSheet, onSave: viewModel.saveHabitToUserDefaults)
         }
         .padding()
         .navigationTitle("Add New Habit")

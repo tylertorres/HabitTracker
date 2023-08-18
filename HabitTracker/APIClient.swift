@@ -13,6 +13,10 @@ protocol API {
 }
 
 class APIClient : API {
+    func saveHabit(user: UUID, habitName: String) async throws {
+        return
+    }
+    
     static let shared = APIClient()
     
     private let scheme : String = "http://"
@@ -23,6 +27,8 @@ class APIClient : API {
     private let habitsPath : String =  "/habits"
     
     private let urlSession : URLSession = URLSession.shared
+    
+    private let userDefaults = UserDefaults.standard
     
     func getHabits(for user: String) async throws -> [Habit] {
         let request = createGetHabitsRequest(userId: user)
@@ -36,19 +42,43 @@ class APIClient : API {
         return habits
     }
     
-    func saveHabit(user: UUID, habitName: String) async throws -> Void {
-        try await Task.sleep(for: Duration.seconds(5))
+    
+    func getHabitsFromUserDefaults(for userId: String) -> [Habit]? {
+        guard let savedData = userDefaults.data(forKey: userId) else { return nil }
         
-        return
-        
-        let request = createInsertHabitRequest(userId: user, habitName: habitName)
-        
-        let (data, _) = try await urlSession.data(for: request)
-        
-        let _ = try JSONDecoder().decode(InsertHabitResponse.self, from: data)
-        
-        print("Successfully persisted habit \(habitName) for user \(user)")
+        do {
+            return try JSONDecoder().decode([Habit].self, from: savedData)
+        } catch {
+            return nil
+        }
     }
+    
+    func saveToUserDefaults(_ userId: String, _ newHabit: Habit) {
+        print("Saving to habits array...")
+        var existingHabits = getHabitsFromUserDefaults(for: userId) ?? []
+        existingHabits.append(newHabit)
+        
+        do {
+            let encodedHabits = try JSONEncoder().encode(existingHabits)
+            userDefaults.set(encodedHabits, forKey: userId)
+        } catch {
+            print(error)
+        }
+    }
+    
+//    func saveHabit(user: UUID, habitName: String) async throws -> Void {
+//        try await Task.sleep(for: Duration.seconds(5))
+//        
+//        return
+//        
+//        let request = createInsertHabitRequest(userId: user, habitName: habitName)
+//        
+//        let (data, _) = try await urlSession.data(for: request)
+//        
+//        let _ = try JSONDecoder().decode(InsertHabitResponse.self, from: data)
+//        
+//        print("Successfully persisted habit \(habitName) for user \(user)")
+//    }
     
     private func createGetHabitsRequest(userId: String) -> URLRequest {
         let endpointUrl = baseUrl + usersPath + "/\(userId)" + habitsPath

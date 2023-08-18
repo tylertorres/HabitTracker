@@ -8,7 +8,7 @@
 import Foundation
 
 struct Habit : Codable, Hashable {
-    let id: Int
+    let id: String
     let name: String
     var icon: String
     var userId : String?

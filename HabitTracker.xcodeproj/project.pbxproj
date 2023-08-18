@@ -29,6 +29,7 @@
 		2FEA25972A5630360075F8CE /* Iconoir in Frameworks */ = {isa = PBXBuildFile; productRef = 2FEA25962A5630360075F8CE /* Iconoir */; };
 		2FFADA6A2A4E3DDC00132964 /* InsertHabitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADA692A4E3DDC00132964 /* InsertHabitResponse.swift */; };
 		2FFADA6C2A4F2E6400132964 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADA6B2A4F2E6400132964 /* HabitsView.swift */; };
+		2FFEA1422A901BFF00788353 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFEA1412A901BFF00788353 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		2FBBB7D72A81A4AB00041B57 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 		2FFADA692A4E3DDC00132964 /* InsertHabitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertHabitResponse.swift; sourceTree = "<group>"; };
 		2FFADA6B2A4F2E6400132964 /* HabitsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
+		2FFEA1412A901BFF00788353 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				2F10C8952A32A1FF0013E32C /* Preview Content */,
 				2F8685892A4CE7F4005113C3 /* APIClient.swift */,
 				2F4396B12A60CD1100C7C716 /* MaterialButton.swift */,
+				2FFEA1412A901BFF00788353 /* NetworkManager.swift */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				2F173C2E2A82B63700E3BA81 /* Date+Ext.swift in Sources */,
 				2F86858C2A4E043E005113C3 /* HabitResponse.swift in Sources */,
 				2F10C8922A32A1FD0013E32C /* ContentView.swift in Sources */,
+				2FFEA1422A901BFF00788353 /* NetworkManager.swift in Sources */,
 				2F10C8A82A32BA8F0013E32C /* Habit.swift in Sources */,
 				2F10C8902A32A1FD0013E32C /* HabitTrackerApp.swift in Sources */,
 				2F10C8A52A32BA650013E32C /* SingleHabitView.swift in Sources */,

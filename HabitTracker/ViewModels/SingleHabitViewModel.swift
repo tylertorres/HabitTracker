@@ -10,14 +10,14 @@ import Foundation
 class SingleHabitViewModel : ObservableObject {
     
     @Published var activityStore: [Activity] = [
-        Activity(id: 1, dateCompleted: .now, note: "", habitId: 3),
-        Activity(id: 2, dateCompleted: .now.subtracting(days: 5), note: "this is a note v2", habitId: 7)
+        Activity(id: 1, dateCompleted: .now, note: "", habitId: UUID().uuidString),
+        Activity(id: 2, dateCompleted: .now.subtracting(days: 5), note: "this is a note v2", habitId: UUID().uuidString)
     ]
     @Published var showAddActivitySheet: Bool = false
     @Published var currentNoteText: String = ""
     
-    func saveActivity(habitId: Int) {
-        var activity = Activity(id: activityStore.count + 1, dateCompleted: .now, note: currentNoteText, habitId: habitId)
+    func saveActivity(habitId: String) {
+        let activity = Activity(id: activityStore.count + 1, dateCompleted: .now, note: currentNoteText, habitId: habitId)
         activityStore.append(activity)
         clearInput()
     }
@@ -26,8 +26,4 @@ class SingleHabitViewModel : ObservableObject {
         showAddActivitySheet = false
         currentNoteText = ""
     }
-    
-    
-    
-    
 }
