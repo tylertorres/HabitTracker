@@ -96,7 +96,9 @@ struct MaterialTextField: View {
     @State private var isEditing = false
     
     var body: some View {
+        
         ZStack(alignment: .leading) {
+            
             Text("Habit Name")
                 .font(.caption)
                 .foregroundColor(isEditing ? .black : .gray)

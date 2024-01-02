@@ -16,7 +16,6 @@ struct IconsView: View {
     let icons : [Iconoir] = Iconoir.allCases
     let gridLayout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     
-    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: gridLayout, spacing: 40) {
