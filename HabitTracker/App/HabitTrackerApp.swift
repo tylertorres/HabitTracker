@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct HabitTrackerApp: App {
+    
+    @StateObject private var model = HabitsModel()
+    
     var body: some Scene {
         WindowGroup {
-            HabitsView()
+            HabitsList(model: model)
                 .environment(\.colorScheme, .light)
         }
     }
