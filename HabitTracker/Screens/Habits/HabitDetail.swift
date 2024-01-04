@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct HabitsDetail: View {
+struct HabitDetail: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Habit detail")
     }
 }
 
 #Preview {
-    HabitsDetail()
+    HabitDetail()
 }

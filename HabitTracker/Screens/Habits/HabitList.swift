@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HabitsList: View {
+struct HabitList: View {
     
     @ObservedObject var model: HabitsModel
     
@@ -15,10 +15,13 @@ struct HabitsList: View {
         NavigationStack(path: $model.path) {
             List {
                 ForEach(self.model.habits) { habit in
-                    Button(action:{}) {
-                        Text("\(habit.name)")
+                    Button {
+                        
+                    } label: {
+                        HabitsListRow(habit: habit)
                     }
                 }
+                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .scrollIndicators(.hidden)
@@ -30,7 +33,6 @@ struct HabitsList: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-                    
                 }
             }
             .sheet(item: $model.destination) { destination in
@@ -53,28 +55,16 @@ struct HabitsList: View {
                                 }
                             }
                     }
+                case let .habitDetail(model):
+                    HabitDet
                 }
             }
         }
     }
 }
 
-struct HabitsListRow: View {
-    
-    let habit: Habit
-    
-    var body: some View {
-        HStack {
-            VStack {
-                Text(self.habit.name)
-                Text("Last completed on: ")
-            }
-            Spacer()
-            
-        }
-    }
-}
+
 
 #Preview {
-    HabitsList(model: HabitsModel(habits: [.mock]))
+    HabitList(model: HabitsModel(habits: [.mock]))
 }
